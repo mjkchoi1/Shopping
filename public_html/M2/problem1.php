@@ -11,7 +11,8 @@ function processArray($arr) {
     foreach($arr as $val){
         if($val%2==1)
         echo $val;
-    }
+    } //UCID : mjc
+      //Date : 02/11/2023
 
 
 }
