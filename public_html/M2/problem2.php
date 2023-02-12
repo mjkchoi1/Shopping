@@ -12,7 +12,7 @@ function getTotal($arr) {
     $total= round($total, 2); //UCID : mjc
                           //Date : 02/11/2023
 
-    echo "The total is " . var_export($total);
+    echo "The total is " , var_export($total);
 }
 echo "Problem 2: Adding Floats<br>";
 ?>
