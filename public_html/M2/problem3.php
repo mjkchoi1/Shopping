@@ -9,6 +9,11 @@ function bePositive($arr) {
     echo "<br>Positive output:<br>";
     //TODO use echo to output all of the values as positive (even if they were originally positive) 
     //hint: may want to use var_dump() to show final data types
+    foreach($arr as $val){
+        $val=abs($val);
+        echo $val. ",";
+    }//UCID: mjc
+     //Date: 02/11/2023
 }
 echo "Problem 3: Be Positive<br>";
 ?>

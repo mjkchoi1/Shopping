@@ -7,8 +7,12 @@ function getTotal($arr) {
     echo "<br>Processing Array:<br><pre>" . var_export($arr, true) . "</pre>";
     $total = 0.00;
     //TODO do adding here
+    $total = array_sum($arr);
     //TODO do rounding stuff here
-    echo "The total is " . var_export($total, true);
+    $total= round($total, 2); //UCID : mjc
+                          //Date : 02/11/2023
+
+    echo "The total is " , var_export($total);
 }
 echo "Problem 2: Adding Floats<br>";
 ?>
