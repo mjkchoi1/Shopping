@@ -25,18 +25,26 @@
 </script>
 <style>
     .alert-success {
-        background-color: green
-    }
+    background-color: green
+}
 
-    .alert-warning {
-        background-color: yellow;
-    }
+.alert-warning {
+    background-color: yellow;
+}
 
-    .alert-danger {
-        background-color: red;
-    }
+.alert-danger {
+    background-color: red;
+}
 
-    .alert-info {
-        background-color: teal;
-    }
+.alert-info {
+    background-color: teal;
+}
+nav li{display: inline; background-color: rebeccapurple;}
+nav li a{color: hotpink}
+input{border-radius: 50%;}
+body{
+    background-color: hotpink;
+    color: rgb(153, 0, 153);
+
+}
 </style>
