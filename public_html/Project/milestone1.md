@@ -1,6 +1,6 @@
 <table><tr><td> <em>Assignment: </em> IT202 Milestone1 Deliverable</td></tr>
 <tr><td> <em>Student: </em> Matthew Choi (mjc)</td></tr>
-<tr><td> <em>Generated: </em> 4/10/2023 10:37:24 PM</td></tr>
+<tr><td> <em>Generated: </em> 4/10/2023 10:44:57 PM</td></tr>
 <tr><td> <em>Grading Link: </em> <a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IT202-008-S23/it202-milestone1-deliverable/grade/mjc" target="_blank">Grading</a></td></tr></table>
 <table><tr><td> <em>Instructions: </em> <ol><li>Checkout Milestone1 branch</li><li>Create a milestone1.md file in your Project folder</li><li>Git add/commit/push this empty file to Milestone1 (you'll need the link later)</li><li>Fill in the deliverable items<ol><li>For each feature, add a direct link (or links) to the expected file the implements the feature from Heroku Prod (I.e,&nbsp;<a href="https://mt85-prod.herokuapp.com/Project/register.php">https://mt85-prod.herokuapp.com/Project/register.php</a>)</li></ol></li><li>Ensure your images display correctly in the sample markdown at the bottom</li><ol><li>NOTE: You may want to try to capture as much checklist evidence in your screenshots as possible, you do not need individual screenshots and are recommended to combine things when possible. Also, some screenshots may be reused if applicable.</li></ol><li>Save the submission items</li><li>Copy/paste the markdown from the "Copy markdown to clipboard link" or via the download button</li><li>Paste the code into the milestone1.md file or overwrite the file</li><li>Git add/commit/push the md file to Milestone1</li><li>Double check the images load when viewing the markdown file (points will be lost for invalid/non-loading images)</li><li>Make a pull request from Milestone1 to dev and merge it (resolve any conflicts)<ol><li>Make sure everything looks ok on heroku dev</li></ol></li><li>Make a pull request from dev to prod (resolve any conflicts)<ol><li>Make sure everything looks ok on heroku prod</li></ol></li><li>Submit the direct link from github prod branch to the milestone1.md file (no other links will be accepted and will result in 0)</li></ol></td></tr></table>
 <table><tr><td> <em>Deliverable 1: </em> Feature: User will be able to register a new account </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707773-e6aef7cb-d5b2-4053-bbb1-b09fc609041e.png"></td></tr>
@@ -171,7 +171,7 @@
 <tr><td> <em>Caption:</em> <p>original table<br></p>
 </td></tr>
 <tr><td><img width="768px" src="https://user-images.githubusercontent.com/116091558/231036727-383b4774-f7bb-4f94-ad61-75c7d0ea36b6.png"/></td></tr>
-<tr><td> <em>Caption:</em> <p>Modified table, user <a href="mailto:&#109;&#x6a;&#x63;&#64;&#110;&#x6a;&#x69;&#x74;&#46;&#101;&#100;&#x75;">&#109;&#x6a;&#x63;&#64;&#110;&#x6a;&#x69;&#x74;&#46;&#101;&#100;&#x75;</a> <mjc> has been changed to <a href="mailto:&#x6d;&#x6a;&#107;&#x40;&#110;&#106;&#x69;&#116;&#46;&#101;&#100;&#117;">&#x6d;&#x6a;&#107;&#x40;&#110;&#106;&#x69;&#116;&#46;&#101;&#100;&#117;</a> <mjk><br></p>
+<tr><td> <em>Caption:</em> <p>Modified table, user <a href="mailto:&#x6d;&#106;&#x63;&#64;&#x6e;&#x6a;&#105;&#116;&#x2e;&#101;&#100;&#x75;">&#x6d;&#106;&#x63;&#64;&#x6e;&#x6a;&#105;&#116;&#x2e;&#101;&#100;&#x75;</a> <mjc> has been changed to <a href="mailto:&#109;&#x6a;&#107;&#64;&#x6e;&#106;&#x69;&#116;&#x2e;&#x65;&#x64;&#117;">&#109;&#x6a;&#107;&#64;&#x6e;&#106;&#x69;&#116;&#x2e;&#x65;&#x64;&#117;</a> <mjk><br></p>
 </td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 3: </em> Add the related pull request(s) for this feature</td></tr>
@@ -181,10 +181,10 @@
 </table></td></tr>
 <table><tr><td> <em>Deliverable 9: </em> Issues and Project Board </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://user-images.githubusercontent.com/54863474/211707773-e6aef7cb-d5b2-4053-bbb1-b09fc609041e.png"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Add screenshots showing which issues are done/closed (project board) Incomplete Issues should not be closed</td></tr>
-<tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/116091558/231040722-c19a5d54-3683-40d0-8399-a2c1347d440a.png"/></td></tr>
+<tr><td><table><tr><td><img width="768px" src="https://user-images.githubusercontent.com/116091558/231042271-49df11ab-e8dd-4113-bec1-a2ca42133671.png"/></td></tr>
 <tr><td> <em>Caption:</em> <p>Screenshot number 1 of project board perspective<br></p>
 </td></tr>
-<tr><td><img width="768px" src="https://user-images.githubusercontent.com/116091558/231040846-8bd139e0-8b04-4217-a7a3-bb6177e170a0.png"/></td></tr>
+<tr><td><img width="768px" src="https://user-images.githubusercontent.com/116091558/231042303-d114b4dd-58c5-4c6e-af46-6b4143ef0b1f.png"/></td></tr>
 <tr><td> <em>Caption:</em> <p>Screenshot number 2<br></p>
 </td></tr>
 </table></td></tr>
