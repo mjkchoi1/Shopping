@@ -1,0 +1,110 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #000000;
+    padding: 1rem;
+  }
+  
+  nav ul {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    list-style: none;
+    margin-left: 1rem;
+  }
+  
+  
+  nav a:hover {
+    background-color: #444;
+  }
+  
+  .container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 3.5rem;
+    z-index: 1;
+  }
+  
+  .alert {
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 0.25rem;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .alert-success {
+    background-color: rgb(0, 6, 128);
+  }
+  
+  .alert-warning {
+    background-color: #ffd559;
+  }
+  
+  .alert-danger {
+    background-color: #ff1100;
+  }
+  
+  .alert-info {
+    background-color: #bc03ff;
+  }
+
+
+  form {
+    display: flex;
+    flex-direction: column;
+    allign-items: flex-start;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #2e2e2e;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  form label {
+    margin-bottom: 0.5rem;
+  }
+  
+  form input,
+  form textarea {
+    background-color: #3b3b3b;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  form input:focus,
+  form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #555;
+  }
+  
+  form button {
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #777;
+  }
+  
+  form .error {
+    color: #FFC107;
+    font-weight: bold;
+  }
+  
+  
+  
