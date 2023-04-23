@@ -1,5 +1,5 @@
 <div id="balance-value">
-    Balance: <?php echo get_account_balance(); ?>
+    Balance: <?php include('get_account_balance.php'); ?>
 </div>
 <script>
     let bv = document.getElementById("balance-value");

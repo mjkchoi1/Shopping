@@ -79,7 +79,7 @@ try {
                                     <?php /* if this is part of a search, lets persist the search criteria so it reloads correctly*/ ?>
                                     <input type="hidden" name="role" value="<?php se($search, null); ?>" />
                                 <?php endif; ?>
-                                <input class="btn btn-primary" type="submit" value="Toggle" />
+                                <input class="btn btn-warning" type="submit" value="Toggle" />
                             </form>
                         </td>
                     </tr>
@@ -89,5 +89,5 @@ try {
     </table>
     <?php
     //note we need to go up 1 more directory
-    require_once(__DIR__ . "/../../../partials/flash.php");
+    require_once(__DIR__ . "/../../../partials/footer.php");
     ?>
