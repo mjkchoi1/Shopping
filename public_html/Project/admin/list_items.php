@@ -27,7 +27,7 @@ if (isset($_POST["itemName"])) {
     <h1>List Items</h1>
     <form method="POST" class="row row-cols-lg-auto g-3 align-items-center">
         <div class="input-group mb-3">
-            <input class="form-control" type="search" name="itemName" placeholder="Item Filter" />
+            <input class="form-control" type="search" name="itemName" placeholder="Item Filter" value="<?php se($_POST, 'itemName');?>" />
             <input class="btn btn-primary" type="submit" value="Search" />
         </div>
     </form>
