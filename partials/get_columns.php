@@ -1,12 +1,18 @@
 <?php
-require_once(__DIR__ . "/../lib/db.php");
 
-function get_columns($table_name){
+function get_columns($table)
+{
+    $table = se($table, null, null, false);
     $db = getDB();
-    $stmt = $db->prepare("SHOW COLUMNS FROM $table_name");
-    $stmt->execute();
-    $columns = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $columns;
+    $query = "SHOW COLUMNS from $table"; //be sure you trust $table
+    $stmt = $db->prepare($query);
+    $results = [];
+    try {
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        flash("An unexpect error occurred getting table info", "danger");
+        error_log(var_export($e, true));
+    }
+    return $results;
 }
-
-?>
