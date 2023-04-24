@@ -8,5 +8,5 @@ function get_account_balance($account_id){
     $stmt->execute();
     $balance = $stmt->fetchColumn();
     return $balance;
-}
+}   
 ?>

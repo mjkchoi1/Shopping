@@ -5,6 +5,6 @@ CREATE TABLE IF NOT EXISTS Accounts(
     balance int DEFAULT 0,
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES Users(id),
-    check ((account != '000000000000'balance >= 0) AND LENGTH(account) = 12)
-)
+    check ((account != '000000000000') AND (balance >= 0) AND LENGTH(account) = 12),
+    FOREIGN KEY (user_id) REFERENCES Users(id)
+);

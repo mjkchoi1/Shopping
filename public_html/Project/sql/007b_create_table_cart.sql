@@ -6,9 +6,9 @@ CREATE TABLE IF NOT EXISTS Cart(
     user_id int,
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-    check (desired_quantity > 0),
-    check (unit_price >= 0), -- don't allow negative costs
+    CHECK (desired_quantity > 0),
+    CHECK (unit_price >= 0), -- don't allow negative costs
     FOREIGN KEY (`user_id`) REFERENCES Users(`id`),
-    FOREIGN KEY (`item_id`) REFERENCES RM_Items(`id`),
+    FOREIGN KEY (`item_id`) REFERENCES Products(`id`),
     UNIQUE KEY (`user_id`, `item_id`)
 )

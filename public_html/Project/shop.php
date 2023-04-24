@@ -1,9 +1,22 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 
+
+// Set default filter values
+$filter_by = "cost";
+$sort_order = "ASC";
+
+// Check if form was submitted
+if (isset($_POST['filter'])) {
+    // Get filter values from form submission
+    $filter_by = $_POST['filter_by'];
+    $sort_order = $_POST['sort_order'];
+}
+
+
 $results = [];
 $db = getDB();
-$stmt = $db->prepare("SELECT id, name, description, cost, stock, image FROM RM_Items WHERE stock > 0 LIMIT 50");
+$stmt = $db->prepare("SELECT id, name, description, cost, stock, image FROM Products WHERE stock > 0 LIMIT 50");
 try {
     $stmt->execute();
     $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -11,8 +24,8 @@ try {
         $results = $r;
     }
 } catch (PDOException $e) {
-    error_log(var_export($e, true));
     flash("Error fetching items", "danger");
+    flash($e->getMessage(), "danger");
 }
 ?>
 

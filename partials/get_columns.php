@@ -16,3 +16,4 @@ function get_columns($table)
     }
     return $results;
 }
+?>
