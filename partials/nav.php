@@ -66,6 +66,7 @@ session_start();
                             <li><a class="dropdown-item" href="<?php echo get_url('admin/add_item.php'); ?>">Create</a></li>
                             <li><a class="dropdown-item" href="<?php echo get_url('admin/list_items.php'); ?>">List</a></li>
                             <li><a class="dropdown-item" href="<?php echo get_url('admin/edit_item.php'); ?>">Edit</a></li>
+                            <li><a class="dropdown-item" href="<?php echo get_url('admin/admin_item.php'); ?>">Admin</a></li>
                         </ul>
                     </li>
                 <?php endif; ?>

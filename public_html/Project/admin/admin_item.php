@@ -50,7 +50,7 @@ try {
                     <td><?php se($item, "stock"); ?></td>
                     <td><?php if (se($item, "image", "", false)) : ?><img src="<?php se($item, "image"); ?>" alt=""><?php endif; ?></td>
                     <td><?php se($item, "visible"); ?></td>
-                    <td><a href="<?php echo $BASE_PATH ?>/admin/edit_product.php?id=<?php se($item, "id"); ?>">Edit</a></td>
+                    <td><a href="<?php echo $BASE_PATH ?>/admin/edit_item.php?id=<?php se($item, "id"); ?>">Edit</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

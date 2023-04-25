@@ -54,6 +54,7 @@ try {
                             <input type="number" name="desired_quantity" value="1" min="1" max="<?php se($item, "stock");?>"/>
                             <input type="submit" class="btn btn-primary" value="Add to Cart"/>
                         </form>
+                        <a href="product.php?id=<?php se($item, "id"); ?>" class="btn btn-secondary">View Details</a>
                     </div>
                 </div>
             </div>

@@ -41,10 +41,20 @@ if (!empty($action)) {
                 flash("Error updating item quantity", "danger");
             }
             break;
-        case "delete":
-            flash("Developer: You implement this logic", "warning");
-            //TODO you do this part
-            break;
+            case "delete":
+                $query = "DELETE FROM Cart WHERE id = :cid AND user_id = :uid";
+                $stmt = $db->prepare($query);
+                $stmt->bindValue(":cid", se($_POST, "cart_id", 0, false), PDO::PARAM_INT);
+                $stmt->bindValue(":uid", get_user_id(), PDO::PARAM_INT);
+                try {
+                    $stmt->execute();
+                    flash("Item deleted from cart", "success");
+                } catch (PDOException $e) {
+                    error_log(var_export($e, true));
+                    flash("Error deleting item from cart", "danger");
+                }
+                break;
+            
     }
 }
 $query = "SELECT cart.id, item.stock, item.name, cart.unit_price, (cart.unit_price * cart.desired_quantity) as subtotal, cart.desired_quantity

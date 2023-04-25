@@ -12,7 +12,6 @@ function save_data($table, $data, $ignore = ["submit"])
     //https://www.php.net/manual/en/functions.arrow.php
     $placeholders = array_map(fn ($x) => ":$x", $columns);
     $query .= "(" . join(",", $columns) . ") VALUES (" . join(",", $placeholders) . ")";
-
     $params = [];
     foreach ($columns as $col) {
         $params[":$col"] = $data[$col];
