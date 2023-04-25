@@ -9,6 +9,7 @@ $TABLE_NAME = "Products";
 if (isset($_POST["submit"])) {
     if (has_role("Admin")) {
         header("Location: $BASE_PATH/edit_item.php?id=" . $_GET['id']);
+
     } else {
         header("Location: $BASE_PATH/home.php");
     }

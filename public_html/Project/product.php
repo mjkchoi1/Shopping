@@ -40,7 +40,7 @@ if (!$product) {
         </div>
     </div>
 </div>
-
+"<li><a href=>{$r['name']}</a></li>"
 <?php
 require(__DIR__ . "/../../partials/footer.php");
 ?>
