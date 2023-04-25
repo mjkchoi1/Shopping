@@ -15,6 +15,8 @@ require(__DIR__ . "/sanitizers.php");
 //TODO 3: User helpers
 require(__DIR__ . "/user_helpers.php");
 
+require(__DIR__ . "/save_data.php");
+
 
 //duplicate email/username
 require(__DIR__ . "/duplicate_user_details.php");
@@ -22,4 +24,10 @@ require(__DIR__ . "/duplicate_user_details.php");
 require(__DIR__ . "/reset_session.php");
 
 require(__DIR__ . "/get_url.php");
+
+require(__DIR__ . "/input_map.php");
+
+require(__DIR__ . "/update_data.php");
+
+
 ?>

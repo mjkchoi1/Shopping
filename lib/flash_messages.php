@@ -1,4 +1,5 @@
 <?php
+
 function flash($msg = "", $color = "info")
 {
     $message = ["text" => $msg, "color" => $color];
