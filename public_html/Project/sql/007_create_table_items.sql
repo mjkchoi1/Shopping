@@ -10,3 +10,4 @@ CREATE TABLE IF NOT EXISTS Products(
     check (stock >= 0), -- don't allow negative stock; I don't allow backorders
     check (cost >= 0) -- don't allow negative costs
 )
+ALTER TABLE Products ADD COLUMN visible BOOLEAN DEFAULT 1;

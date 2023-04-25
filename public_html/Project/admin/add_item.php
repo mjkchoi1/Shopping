@@ -19,7 +19,7 @@ if (isset($_POST["submit"])) {
 //get the table definition
 $columns = get_columns($TABLE_NAME);
 //echo "<pre>" . var_export($columns, true) . "</pre>";
-$ignore = ["id", "modified", "created"];
+$ignore = ["id", "modified", "created","visible"];
 ?>
 <div class="container-fluid">
     <h1>Add Item</h1>
@@ -35,6 +35,13 @@ $ignore = ["id", "modified", "created"];
         <?php endforeach; ?>
         <input class="btn btn-primary" type="submit" value="Create" name="submit" />
     </form>
+</div>
+<div class="mb-4">
+    <label class="form-label" for="visible">Visible</label>
+    <select class="form-control" id="visible" name="visible">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
 </div>
 <?php
 //note we need to go up 1 more directory

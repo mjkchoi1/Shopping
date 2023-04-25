@@ -1,5 +1,8 @@
 <?php
 require_once(__DIR__ . "/../../../partials/nav.php");
+require_once(__DIR__ . "/../../../partials/nav.php");
+require_once(__DIR__ . "/../../../partials/get_columns.php");
+require_once(__DIR__ . "/../../../lib/functions.php");
 
 // Check user's role before displaying page
 if (!has_role("Admin") && !has_role("Shop Owner")) {
@@ -9,7 +12,7 @@ if (!has_role("Admin") && !has_role("Shop Owner")) {
 
 $results = [];
 $db = getDB();
-$stmt = $db->prepare("SELECT id, name, description, cost, stock, image, visible FROM Products");
+$stmt = $db->prepare("SELECT id, name, description, cost, stock, image FROM Products");
 try {
     $stmt->execute();
     $r = $stmt->fetchAll(PDO::FETCH_ASSOC);

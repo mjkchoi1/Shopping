@@ -15,5 +15,7 @@ function get_columns($table)
         error_log(var_export($e, true));
     }
     return $results;
+
+
 }
 ?>
