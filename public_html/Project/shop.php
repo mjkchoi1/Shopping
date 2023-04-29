@@ -1,7 +1,6 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 
-
 // Set default filter values
 $filter_by = "cost";
 $sort_order = "ASC";
@@ -13,10 +12,12 @@ if (isset($_POST['filter'])) {
     $sort_order = $_POST['sort_order'];
 }
 
-
 $results = [];
 $db = getDB();
-$stmt = $db->prepare("SELECT id, name, description, cost, stock, image FROM Products WHERE stock > 0 LIMIT 50");
+
+// Add filter to SQL query
+$stmt = $db->prepare("SELECT id, name, description, cost, stock, image FROM Products WHERE stock > 0 ORDER BY $filter_by $sort_order LIMIT 50");
+
 try {
     $stmt->execute();
     $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -31,6 +32,25 @@ try {
 
 <div class="container-fluid">
     <h1>Shop</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="filter_by">Filter By:</label>
+            <select class="form-control" name="filter_by" id="filter_by">
+                <option value="cost"<?php echo $filter_by === 'cost' ? ' selected' : ''; ?>>Cost</option>
+                <option value="name"<?php echo $filter_by === 'name' ? ' selected' : ''; ?>>Name</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sort_order">Sort Order:</label>
+            <select class="form-control" name="sort_order" id="sort_order">
+                <option value="ASC"<?php echo $sort_order === 'ASC' ? ' selected' : ''; ?>>Ascending</option>
+                <option value="DESC"<?php echo $sort_order === 'DESC' ? ' selected' : ''; ?>>Descending</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" name="filter" class="btn btn-primary" value="Filter">
+        </div>
+    </form>
     <div class="row row-cols-sm-2 row-cols-xs-1 row-cols-md-3 row-cols-lg-6 g-4">
         <?php foreach ($results as $item) : ?>
             <div class="col">
@@ -41,7 +61,6 @@ try {
                     <?php if (se($item, "image", "", false)) : ?>
                         <img src="<?php se($item, "image"); ?>" class="card-img-top" alt="...">
                     <?php endif; ?>
-
                     <div class="card-body">
                         <h5 class="card-title">Name: <?php se($item, "name"); ?></h5>
                         <p class="card-text">Description: <?php se($item, "description"); ?></p>

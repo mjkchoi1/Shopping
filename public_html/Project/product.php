@@ -35,12 +35,12 @@ if (!$product) {
                 <input type="submit" class="btn btn-primary" value="Add to Cart">
             </form>
             <?php if (has_role("Admin")): ?>
-                <a href="edit_product.php?id=<?php echo $product['id']; ?>">Edit</a>
+                <a href="/Project/admin/edit_item.php?id=<?php echo $product['id']; ?>">Edit</a>
             <?php endif; ?>
         </div>
     </div>
 </div>
-"<li><a href=>{$r['name']}</a></li>"
+
 <?php
 require(__DIR__ . "/../../partials/footer.php");
 ?>
