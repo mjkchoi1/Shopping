@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
-<script>
+<head>
+	<title>Collect The Square Game</title>
+</head>
+<body>
+	<canvas id="canvas" width="600" height="400"></canvas>
+	<script>
 // Collect The Square game
 
 // Get a reference to the canvas DOM element
@@ -28,6 +33,27 @@ var targetX = 0;
 var targetY = 0;
 var targetLength = 25;
 
+// Properties for the powerup
+var powerupX = 0;
+var powerupY = 0;
+var powerupLength = 25;
+var powerupTimer = 0; // Timer for the powerup
+var powerupActive = false; // Whether or not the powerup is active
+
+// Properties for the other player
+var otherPlayerX = canvas.width - 100;
+var otherPlayerY = 100;
+var otherPlayerSpeed = 6;
+var otherPlayerSideLength = 50;
+var otherPlayerScore = 0;
+
+// FLags to track which keys the other player is pressing
+var otherPlayerDown = false;
+var otherPlayerUp = false;
+var otherPlayerRight = false;
+var otherPlayerLeft = false;
+
+
 // Determine if number a is within the range b to c (exclusive)
 function isWithin(a, b, c) {
   return (a > b && a < c);
@@ -42,6 +68,7 @@ var id = null;
 canvas.addEventListener('keydown', function(event) {
   event.preventDefault();
   console.log(event.key, event.keyCode);
+  
   if (event.keyCode === 40) { // DOWN
     down = true;
   }
@@ -156,6 +183,13 @@ function draw() {
   if (x + sideLength > canvas.width) {
     x = canvas.width - sideLength;
   }
+
+  // Draw the powerup
+  if (!powerupActive) {
+    context.fillStyle = '#FFD700';
+    context.fillRect(powerupX, powerupY, powerupLength, powerupLength);
+  }
+
   // Collide with the target
   if (isWithin(targetX, x, x + sideLength) || isWithin(targetX + targetLength, x, x + sideLength)) { // X
     if (isWithin(targetY, y, y + sideLength) || isWithin(targetY + targetLength, y, y + sideLength)) { // Y
@@ -168,6 +202,10 @@ function draw() {
   // Draw the square
   context.fillStyle = '#FF0000';
   context.fillRect(x, y, sideLength, sideLength);
+  // Draw the other player
+  context.fillStyle = '#FFA07A';
+  context.fillRect(otherPlayerX, otherPlayerY, otherPlayerSideLength, otherPlayerSideLength);
+
   // Draw the target 
   context.fillStyle = '#00FF00';
   context.fillRect(targetX, targetY, targetLength, targetLength);
@@ -184,9 +222,12 @@ function draw() {
     window.requestAnimationFrame(draw);
   }
 }
+
 // Start the game
 menu();
 canvas.focus();
 </script>
+
+</body>
 
 </html>
