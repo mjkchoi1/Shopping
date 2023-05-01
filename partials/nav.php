@@ -40,10 +40,11 @@ if (!session_status() === PHP_SESSION_ACTIVE) {
         <div class="collapse navbar-collapse" id="navContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <?php if (is_logged_in()) : ?>
-
+                    
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('profile.php'); ?>">Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('shop.php'); ?>">Shop</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('cart.php'); ?>">Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Project/order_history.php">Order History</a>
                     
                 <?php endif; ?>
                 <?php if (!is_logged_in()) : ?>
