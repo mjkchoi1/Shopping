@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $ini = @parse_ini_file(".env");
 
 if($ini && isset($ini["DB_URL"])){

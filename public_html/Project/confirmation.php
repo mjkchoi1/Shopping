@@ -1,18 +1,6 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
-?>
-<div class="container-fluid">
-    <h1>Order Confirmation</h1>
-    <p>Thank you for your order! Your order has been successfully placed and is being processed.</p>
-    <a href="browse.php" class="btn btn-primary">Continue Shopping</a>
-</div>
-<?php
-require(__DIR__ . "/../../partials/footer.php");
-?>
-<?php
-require(__DIR__ . "/../../partials/nav.php");
 
-is_logged_in(true);
 
 // Check if the 'id' parameter is set in the URL and is a valid integer
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {

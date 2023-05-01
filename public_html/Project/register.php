@@ -1,4 +1,5 @@
 <?php
+session_start(); 
 require(__DIR__ . "/../../partials/nav.php");
 reset_session();
 ?>
@@ -83,6 +84,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
         $stmt = $db->prepare("INSERT INTO Users (email, password, username) VALUES(:email, :password, :username)");
         try {
             $stmt->execute([":email" => $email, ":password" => $hash, ":username" => $username]);
+            reset_session(); // Move the reset_session() call here
             flash("Successfully registered!", "success");
         } catch (Exception $e) {
             users_check_duplicate($e->errorInfo);
