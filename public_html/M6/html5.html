@@ -33,14 +33,14 @@ var targetX = 0;
 var targetY = 0;
 var targetLength = 25;
 
-// Properties for the powerup
+// Properties for the powerup mjc April 30 2023
 var powerupX = 0;
 var powerupY = 0;
 var powerupLength = 25;
-var powerupTimer = 0; // Timer for the powerup
-var powerupActive = false; // Whether or not the powerup is active
+var powerupTime = 0; 
+var powerupActive = false; 
 
-// Properties for the other player
+// Properties for the other player mjc April 30, 2023
 var otherPlayerX = canvas.width - 100;
 var otherPlayerY = 100;
 var otherPlayerSpeed = 6;
@@ -184,7 +184,7 @@ function draw() {
     x = canvas.width - sideLength;
   }
 
-  // Draw the powerup
+  // Draw the powerup mjc April 30 2023
   if (!powerupActive) {
     context.fillStyle = '#FFD700';
     context.fillRect(powerupX, powerupY, powerupLength, powerupLength);
@@ -202,7 +202,7 @@ function draw() {
   // Draw the square
   context.fillStyle = '#FF0000';
   context.fillRect(x, y, sideLength, sideLength);
-  // Draw the other player
+  // Draw the other player mjc April 30 2023
   context.fillStyle = '#FFA07A';
   context.fillRect(otherPlayerX, otherPlayerY, otherPlayerSideLength, otherPlayerSideLength);
 
