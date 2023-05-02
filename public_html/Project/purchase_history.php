@@ -1,7 +1,7 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 
-if (!is_logged_in() || !has_role("admin")) {
+if (!is_logged_in() || !has_role("Admin")) {
     flash("You don't have permission to access this page", "warning");
     header("Location: /Project/home.php");
     exit;
@@ -9,7 +9,7 @@ if (!is_logged_in() || !has_role("admin")) {
 
 $db = getDB();
 
-$query = "SELECT o.id, o.created, o.payment_method, o.paid_amount, u.username
+$query = "SELECT o.id, o.created, o.payment_method, o.total_price, o.address, o.first_name, o.last_name, u.username
           FROM Orders o
           JOIN Users u ON o.user_id = u.id
           ORDER BY o.created DESC";
@@ -36,10 +36,10 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <td><?= $o['id'] ?></td>
                     <td><?= $o['created'] ?></td>
-                    <td><?= $o['username'] ?></td>
+                    <td><?= $o['username'] ?></td> <!-- Display the username -->
                     <td><?= $o['payment_method'] ?></td>
-                    <td>$<?= number_format($o['paid_amount'], 2) ?></td>
-                    <td><a href="order_confirmation.php?id=<?= $o['id'] ?>">View Details</a></td>
+                    <td>$<?= number_format($o['total_price'], 2) ?></td>
+                    <td><a href="order_details.php?id=<?= $o['id'] ?>">View Details</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
