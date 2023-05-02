@@ -10,7 +10,7 @@ $localWorks = false;
 //if you're one of those people make this false
 
 //this is an extra condition added to "resolve" the localhost issue for the session cookie
-if (!session_status() === PHP_SESSION_ACTIVE) {
+if (session_status() !== PHP_SESSION_ACTIVE) {
     if (($localWorks && $domain == "localhost") || $domain != "localhost") {
         session_set_cookie_params([
             "lifetime" => 60 * 60,

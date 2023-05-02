@@ -1,9 +1,22 @@
 <?php
-function checkout($payment_method, $paid_amount, $shipping_name, $shipping_address, $shipping_city, $shipping_state, $shipping_zip) {
-    $db = getDB();
-    $user_id = get_user_id();
-    
+function checkout($payment_method, $paid_amount, $address, $first_name, $last_name) {
 
+    $db = getDB();
+    require_once(__DIR__ . "/user_helpers.php");
+    $user_id = get_user_id();
+    if (!$user_id) {
+        die("User ID not found");
+    } else {
+        echo "User ID: " . $user_id;
+    }
+
+    if (isset($_POST['payment_method'])) {
+        $payment_method = $_POST['payment_method'];
+    } else {
+        flash("Payment method not provided", "danger");
+        header("Location: /Project/checkout_form.html");
+        exit;
+    }
 
     // Get all items in the cart
     $query = "SELECT * FROM Cart WHERE user_id = :uid";
@@ -46,18 +59,20 @@ function checkout($payment_method, $paid_amount, $shipping_name, $shipping_addre
         }
     }
 
-    // Create an order in the Orders table
-    $query = "INSERT INTO Orders (user_id, total_price, address, payment_method, money_received)
-              VALUES (:user_id, :total_price, :address, :payment_method, 1)";
+    $query = "INSERT INTO Orders (user_id, total_price, address, payment_method, money_received, first_name, last_name)
+    VALUES (:user_id, :total_price, :address, :payment_method, 1, :first_name, :last_name)";
     $stmt = $db->prepare($query);
     $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->bindValue(':total_price', $cart_total, PDO::PARAM_STR);
     $stmt->bindValue(':address', $address, PDO::PARAM_STR);
     $stmt->bindValue(':payment_method', $payment_method, PDO::PARAM_STR);
+    $stmt->bindValue(':first_name', $first_name, PDO::PARAM_STR);
+    $stmt->bindValue(':last_name', $last_name, PDO::PARAM_STR);
     $stmt->execute();
     $order_id = $db->lastInsertId();
 
-    // Insert items into the OrderItems table
+
+// Insert items into the OrderItems table
 foreach ($cart_items as $item) {
     $query = "INSERT INTO OrderItems (order_id, product_id, unit_price, quantity, subtotal)
               VALUES (:order_id, :product_id, :unit_price, :quantity, :subtotal)";
@@ -69,13 +84,11 @@ foreach ($cart_items as $item) {
     $stmt->bindValue(':subtotal', $item['unit_price'] * $item['desired_quantity'], PDO::PARAM_STR);
     $stmt->execute();
 
-    // Update the stock of the item in the Products table
-    $query = "UPDATE Products SET stock = stock - :quantity WHERE id = :item_id";
-    $stmt = $db->prepare($query);
-    $stmt->bindValue(':item_id', $item['item_id'], PDO::PARAM_INT);
-    $stmt->bindValue(':quantity', $item['desired_quantity'], PDO::PARAM_INT);
-    $stmt->execute();
-}
+$query = "UPDATE Products SET stock = stock - :quantity WHERE id = :item_id";
+$stmt = $db->prepare($query);
+$stmt->bindValue(':item_id', $item['item_id'], PDO::PARAM_INT);
+$stmt->bindValue(':quantity', $item['desired_quantity'], PDO::PARAM_INT);
+$stmt->execute();
 
 
 // Empty the user's cart
@@ -84,6 +97,18 @@ $stmt = $db->prepare($query);
 $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 $stmt->execute();
 
+
+if (isset($_POST['payment_method']) && isset($_POST['paid_amount']) && isset($_POST['address']) && isset($_POST['first_name']) && isset($_POST['last_name'])) {
+    checkout($_POST['payment_method'], $_POST['paid_amount'], $_POST['address'], $_POST['first_name'], $_POST['last_name']);
+} else {
+    flash("Required information not provided", "danger");
+    header("Location: /Project/checkout_form.html");
+    exit;
+}
 flash("Checkout successful", "success");
+header("Location: /Project/confirmation.php?id=" . $order_id);
+exit;
+
+}
 }
 ?>

@@ -9,7 +9,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $db = getDB();
 
-$query = "SELECT id, user_id, payment_method, paid_amount, shipping_name, shipping_address, shipping_city, shipping_state, shipping_zip
+$query = "SELECT id, user_id, payment_method, total_price as paid_amount, address
           FROM Orders
           WHERE user_id = :uid AND id = :oid";
 $stmt = $db->prepare($query);
@@ -24,9 +24,10 @@ if (!$order) {
     exit;
 }
 
-$query = "SELECT item_name, unit_price, quantity, subtotal
-          FROM OrderItems
-          WHERE order_id = :oid";
+$query = "SELECT p.name as item_name, oi.unit_price, oi.quantity, oi.subtotal
+          FROM OrderItems as oi
+          JOIN Products as p ON oi.product_id = p.id
+          WHERE oi.order_id = :oid";
 $stmt = $db->prepare($query);
 $stmt->bindValue(':oid', $_GET['id'], PDO::PARAM_INT);
 $stmt->execute();
@@ -67,11 +68,8 @@ $orderItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <p>Payment Method: <?= $order['payment_method'] ?></p>
     <p>Paid Amount: $<?= number_format($order['paid_amount'], 2) ?></p>
     <h2>Shipping Details</h2>
-    <p>Name: <?= $order['shipping_name'] ?></p>
-    <p>Address: <?= $order['shipping_address'] ?></p>
-    <p>City: <?= $order['shipping_city'] ?></p>
-    <p>State: <?= $order['shipping_state'] ?></p>
-    <p>Zip: <?= $order['shipping_zip'] ?></p>
+    <!-- Placeholder for shipping name -->
+    <p>Address: <?= $order['address'] ?></p>
 </div>
 <?php
 require(__DIR__ . "/../../partials/footer.php");
