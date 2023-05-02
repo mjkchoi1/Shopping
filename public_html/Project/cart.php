@@ -1,5 +1,7 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
+require_once(__DIR__ . "/../../lib/checkout.php"); 
+require_once(__DIR__ . "/../../lib/db.php");
 
 is_logged_in(true);
 
@@ -7,6 +9,11 @@ $action = strtolower(trim(se($_POST, "action","", false)));
 if (!empty($action)) {
     $db = getDB();
     switch ($action) {
+
+        case "checkout":
+            checkout($payment_method, $first_name, $shipping_name, $shipping_address, $shipping_city, $shipping_state, $shipping_zip);;
+            break;
+          
         case "add":
             $query = "INSERT INTO Cart (item_id, desired_quantity, unit_price, user_id)
             VALUES (:iid, :dq, (SELECT cost FROM Products where id = :iid), :uid) ON DUPLICATE KEY UPDATE
@@ -76,7 +83,14 @@ try {
 ?>
 
 <div class="container-fluid">
-    <h1>Cart</h1>
+    <h1>Cart
+    <a href="review_order.php" class="btn btn-secondary">Review Order</a>
+    <form method="POST" action="cart.php">
+    <input type="hidden" name="action" value="checkout">
+    <a href="checkout_form.html" class="btn btn-primary">Checkout</a>
+</form>
+
+    </h1>
     <table class="table table-striped">
         <?php $total = 0; ?>
         <thead>

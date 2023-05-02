@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Form</title>
+</head>
+<body>
+    <h1>Checkout</h1>
+    <form method="POST" action="process_checkout.php">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
+        <br>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
+        <br>
+
+        <label for="payment_method">Payment Method:</label>
+        <select name="payment_method" id="payment_method" required>
+            <option value="credit_card">Credit Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="cash">Cash</option>
+        </select>
+        <br>
+
+        <label for="paid_amount">Paid Amount:</label>
+        <input type="number" name="paid_amount" id="paid_amount" step="0.01" required>
+        <br>
+
+        <label for="address">Shipping Address:</label>
+        <input type="text" name="address" id="address" placeholder="Shipping Address" required>
+        <br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
