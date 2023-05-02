@@ -1,12 +1,12 @@
 <?php
-
 require_once(__DIR__ . "/../lib/functions.php");
 //Note: this is to resolve cookie issues with port numbers
 $domain = $_SERVER["HTTP_HOST"];
 if (strpos($domain, ":")) {
     $domain = explode(":", $domain)[0];
 }
-$localWorks = true; //some people have issues with localhost for the cookie params
+$localWorks = false; 
+//some people have issues with localhost for the cookie params
 //if you're one of those people make this false
 
 //this is an extra condition added to "resolve" the localhost issue for the session cookie
@@ -46,6 +46,8 @@ if (!session_status() === PHP_SESSION_ACTIVE) {
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('cart.php'); ?>">Cart</a></li>
                     <li class="nav-item"><a class="nav-link" href="/Project/order_history.php">Order History</a>
                     
+                    
+                    
                 <?php endif; ?>
                 <?php if (!is_logged_in()) : ?>
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('login.php'); ?>">Login</a></li>
@@ -71,6 +73,7 @@ if (!session_status() === PHP_SESSION_ACTIVE) {
                             <li><a class="dropdown-item" href="<?php echo get_url('admin/list_items.php'); ?>">List</a></li>
                             <li><a class="dropdown-item" href="<?php echo get_url('admin/edit_item.php'); ?>">Edit</a></li>
                             <li><a class="dropdown-item" href="<?php echo get_url('admin/admin_item.php'); ?>">Admin</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Project/purchase_history.php">Purchase History</a>
                         </ul>
                     </li>
                 <?php endif; ?>
