@@ -17,7 +17,7 @@ require(__DIR__ . "/user_helpers.php");
 
 require(__DIR__ . "/save_data.php");
 
-
+require(__DIR__ . "/checkout.php");
 //duplicate email/username
 require(__DIR__ . "/duplicate_user_details.php");
 //reset session
