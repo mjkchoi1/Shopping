@@ -9,7 +9,7 @@ if (!is_logged_in()) {
 
 $db = getDB();
 
-$query = "SELECT id, created, payment_method, paid_amount
+$query = "SELECT id, created, payment_method, total_price, address, first_name, last_name
           FROM Orders
           WHERE user_id = :uid
           ORDER BY created DESC";
@@ -37,8 +37,8 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= $o['id'] ?></td>
                     <td><?= $o['created'] ?></td>
                     <td><?= $o['payment_method'] ?></td>
-                    <td>$<?= number_format($o['paid_amount'], 2) ?></td>
-                    <td><a href="order_confirmation.php?id=<?= $o['id'] ?>">View Details</a></td>
+                    <td>$<?= number_format($o['total_price'], 2) ?></td>
+                    <td><a href="order_details.php?id=<?= $o['id'] ?>">View Details</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

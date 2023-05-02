@@ -11,9 +11,8 @@ $db = getDB();
 
 $query = "SELECT id, user_id, payment_method, total_price as paid_amount, address
           FROM Orders
-          WHERE user_id = :uid AND id = :oid";
+          WHERE id = :oid"; // Remove user ID restriction
 $stmt = $db->prepare($query);
-$stmt->bindValue(':uid', get_user_id(), PDO::PARAM_INT);
 $stmt->bindValue(':oid', $_GET['id'], PDO::PARAM_INT);
 $stmt->execute();
 $order = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -35,9 +34,7 @@ $orderItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="container">
-    <h1>Order Confirmation</h1>
-    <p>Thank you for shopping with us! We hope you enjoy your purchase!</p>
-    <h2>Order Details</h2>
+    <h1>Order Details</h1>
     <table class="table table-striped">
     
         <thead>
